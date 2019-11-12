@@ -15,13 +15,12 @@ def cut_sents(content):
     return sentences
 
 def cut_word_test(context):
-    name_str=[line.strip() for line in open('customer/百家姓.txt',encoding='gb18030').readlines()]
     stopkey=[line.strip() for line in open('customer/stopwords.txt',encoding='utf-8').readlines()] 
     total_cutword = []
     total_content = []
     for i in context:
         words=jieba.cut(i)
-        words_filter=[word for word in words if word[0] not in name_str and word not in stopkey]
+        words_filter=[word for word in words if word not in stopkey]
         if len(words_filter) !=0:
             total_cutword.append(words_filter)
             total_content.append(i)
